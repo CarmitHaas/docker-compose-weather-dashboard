@@ -277,7 +277,7 @@ Each stage has its own solution branch:
 git checkout solution/step-1-dockerfile     # Stage 1: Dockerfile
 git checkout solution/step-2-add-redis      # Stage 2: Redis caching
 git checkout solution/step-3-add-nginx      # Stage 3: Full three-tier
-git checkout solution                       # Final state (same as step-3)
+git checkout solution-final                 # Final state (same as step-3)
 ```
 
 ## Bonus Challenges
