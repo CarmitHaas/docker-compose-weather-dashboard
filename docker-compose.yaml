@@ -1,8 +1,20 @@
 services:
+  # Reverse proxy: serves static files, proxies /api/ to backend
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/usr/share/nginx/html
+    depends_on:
+      - app
+    networks:
+      - frontend-network
+
+  # Backend API: handles weather requests, caches in Redis
   app:
     build: .
-    ports:
-      - "3000:3000"
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -11,17 +23,20 @@ services:
     depends_on:
       - redis
     networks:
-      - app-network
+      - frontend-network
+      - backend-network
 
+  # Database: caches weather API responses
   redis:
     image: redis:alpine
     volumes:
       - redis_data:/data
     networks:
-      - app-network
+      - backend-network
 
 networks:
-  app-network:
+  frontend-network:
+  backend-network:
 
 volumes:
   redis_data:

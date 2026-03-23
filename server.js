@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-const path = require('path');
 const redis = require('redis');
 
 const app = express();
@@ -95,13 +94,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'healthy' });
 });
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Fallback to index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// Static files are served by Nginx - this service only handles API requests
 
 app.listen(PORT, () => {
   console.log(`Weather Dashboard running on port ${PORT}`);
