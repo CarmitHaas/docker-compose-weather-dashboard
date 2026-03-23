@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Weather Dashboard</h1>
+      <div class="search-container">
+        <input type="text" id="city-input" placeholder="Enter city name...">
+        <button id="search-btn">Search</button>
+      </div>
+    </header>
+    
+    <div class="weather-container">
+      <div id="loading" class="hidden">
+        <div class="spinner"></div>
+        <p>Fetching weather data...</p>
+      </div>
+      
+      <div id="error-message" class="hidden">
+        <p>City not found. Please try another location.</p>
+      </div>
+      
+      <div id="current-weather" class="hidden">
+        <div class="city-info">
+          <h2 id="city-name">City Name</h2>
+          <p id="current-date">Date</p>
+        </div>
+        
+        <div class="weather-info">
+          <div class="main-info">
+            <img id="weather-icon" src="images/weather-icons/clouds.svg" alt="Weather condition">
+            <div class="temperature-container">
+              <h3 id="temperature">0°C</h3>
+              <p id="feels-like">Feels like: 0°C</p>
+            </div>
+          </div>
+          
+          <div class="weather-details">
+            <div class="detail">
+              <span class="label">Condition:</span>
+              <span id="weather-condition">Cloudy</span>
+            </div>
+            <div class="detail">
+              <span class="label">Humidity:</span>
+              <span id="humidity">0%</span>
+            </div>
+            <div class="detail">
+              <span class="label">Wind:</span>
+              <span id="wind-speed">0 km/h</span>
+            </div>
+            <div class="detail">
+              <span class="label">Pressure:</span>
+              <span id="pressure">0 hPa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="forecast" class="hidden">
+        <h3>5-Day Forecast</h3>
+        <div class="forecast-container" id="forecast-items">
+          <!-- Forecast items will be added here via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>Weather Dashboard - Docker Compose Evolution Project</p>
+  </footer>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>
